@@ -1,0 +1,159 @@
+
+<h2 class="text-primary text-center">Employees List</h2>
+<div id="showAllEmpList" class="row mx-auto align-center form-group">
+    <div class="group-row mx-auto">
+        <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#newModel">Add New</button>     -->
+
+
+          <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saveEmp">
+            Add New
+            </button>
+    </div>
+    <br/>
+    <br/>
+    <table class="table table-stripped table-border table-hover">
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees;let i=index">
+                <th>{{i}}</th>
+                <td>{{employee.firstName}} {{employee.lastName}}</td>
+                <td>{{employee.address}}</td>
+                <td>{{employee.salary}}</td>
+                <td>
+                    <button class="btn btn-info" data-bs-toggle="modal" (click)="onEditClick($event,employee.id)" data-bs-target="#editStudent">Edit</button>||
+                    <button class="btn btn-danger" (click)="onDeleteClick($event,employee.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+                                        <!-- Save Modal -->
+<!-- Modal -->
+<div class="modal fade" id="saveEmp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+ <!-- Body -->
+ <div class="modal-body">
+    <div class="form-group row">
+        <label for="txtname" class="col-sm-4">First Name</label>
+        <div class="col-sm-8">
+            <input type="text" id="txtname" [(ngModel)]="newEmployee.firstName" placeholder="Enter First Name" class="form-control" name="First Name"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtname" class="col-sm-4">Last Name</label>
+        <div class="col-sm-8">
+            <input type="text" id="txtname" [(ngModel)]="newEmployee.lastName" placeholder="Enter Last Name" class="form-control" name="Last Name"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtage" class="col-sm-4">Age</label>
+        <div class="col-sm-8">
+            <input type="number" id="txtage" [(ngModel)]="newEmployee.age" placeholder="Enter Age" class="form-control" name="age"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtage" class="col-sm-4">Address</label>
+        <div class="col-sm-8">
+            <input type="text" id="txtage" [(ngModel)]="newEmployee.address" placeholder="Enter Address" class="form-control" name="address"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtage" class="col-sm-4">Salary</label>
+        <div class="col-sm-8">
+            <input type="number" id="txtage" [(ngModel)]="newEmployee.salary" placeholder="Enter Address" class="form-control" name="salary"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtemail" class="col-sm-4">Email</label>
+        <div class="col-sm-8">
+            <input type="email" id="txtemail" [(ngModel)]="newEmployee.email" placeholder="Enter Email" class="form-control" name="email"/>
+        </div>
+    </div>
+ </div>
+                 <!-- Footer -->
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" (click)="onSaveClick()" data-bs-dismiss="modal">Submit</button>
+                  </div>
+
+      </div>
+    </div>
+</div>
+
+
+
+                                        <!-- Edit Modal -->
+<!-- Modal -->
+<div class="modal fade" id="editStudent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+                    <!-- Body -->
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="txtname" class="col-sm-4">First Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="txtname" [(ngModel)]="editEmployee.firstName" placeholder="Enter First Name" class="form-control" name="First Name"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtname" class="col-sm-4">Last Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="txtname" [(ngModel)]="editEmployee.lastName" placeholder="Enter Last Name" class="form-control" name="Last Name"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtage" class="col-sm-4">Age</label>
+                            <div class="col-sm-8">
+                                <input type="number" id="txtage" [(ngModel)]="editEmployee.age" placeholder="Enter Age" class="form-control" name="age"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtage" class="col-sm-4">Address</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="txtage" [(ngModel)]="editEmployee.address" placeholder="Enter Address" class="form-control" name="address"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtage" class="col-sm-4">Salary</label>
+                            <div class="col-sm-8">
+                                <input type="number" id="txtage" [(ngModel)]="editEmployee.salary" placeholder="Enter Address" class="form-control" name="salary"/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtemail" class="col-sm-4">Email</label>
+                            <div class="col-sm-8">
+                                <input type="email" id="txtemail" [(ngModel)]="editEmployee.email" placeholder="Enter Email" class="form-control" name="email"/>
+                            </div>
+                        </div>
+                     </div>
+                 <!-- Footer -->
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" (click)="onUpdateClick()" data-bs-dismiss="modal">Update</button>
+                  </div>
+      </div>
+    </div>
+</div> 
+
